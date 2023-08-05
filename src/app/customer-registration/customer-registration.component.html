@@ -1,0 +1,67 @@
+<div class="register-form m-3 p-4">
+    <form [formGroup]="registerForm">
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Customer Name</mat-label>
+                    <input formControlName="name" matInput placeholder="Enter Name">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                  </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Enter E-Mail</mat-label>
+                    <input formControlName="email" matInput placeholder="Enter E-Mail ID">
+                    <mat-icon matSuffix>email</mat-icon>
+                  </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Mobile Number</mat-label>
+                    <input formControlName="mobile" matInput placeholder="Enter Mobile Number">
+                    <mat-icon matSuffix>call</mat-icon>
+                  </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Project Name</mat-label>
+                    <input formControlName="project" matInput placeholder="Enter Project Name">
+                    <mat-icon matSuffix>description</mat-icon>
+                  </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                   <mat-label>Sale Contact Person</mat-label>
+                   <input formControlName="sale_contact" matInput placeholder="Enter Name of Sale Contact Person">
+                   <mat-icon matSuffix>person_pin</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Contract Status</mat-label>
+                    <mat-select formControlName="status">
+                      <mat-option *ngFor="let status of contract" [value]="status">
+                        {{status}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Expected Go-Live date</mat-label>
+                    <input formControlName="golivedate" matInput [matDatepicker]="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+            </div>
+        </div>
+        <button mat-raised-button color="accent" class="mt-4" *ngIf="!isUpdateActive"
+        (click)="submit()">Submit</button>
+        <button mat-raised-button color="accent" class="mt-4" *ngIf="isUpdateActive"
+        (click)="update()">Update</button> &nbsp;
+        <button mat-raised-button color="warn" class="mt-4"
+        routerLink="/list" >Cancel</button>
+        
+    </form>
+</div>
